@@ -1,0 +1,27 @@
+<section class="flex justify-content-center">
+  <form class="w-4" novalidate #form="ngForm" (submit)="login(form)">
+    <div class="card">
+      <h5>Log In</h5>
+      <div class="field">
+        <span class="p-float-label">
+          <input id="float-input" ngModel #email="ngModel" name="email" type="text" pInputText required />
+          <label for="float-input">Email</label>
+        </span>
+      </div>
+
+      <div class="field">
+        <span class="p-float-label">
+          <input id="float-input" ngModel #password="ngModel" name="password" type="password" pInputText required />
+          <label for="float-input">Password</label>
+        </span>
+      </div>
+
+      <div class="field">
+        <button pButton type="submit">Login</button>
+      </div>
+
+
+    </div>
+
+  </form>
+</section>
