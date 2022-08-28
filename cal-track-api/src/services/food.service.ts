@@ -16,6 +16,13 @@ export class FoodService {
     });
   }
 
+  async add(userId: number, food: Food): Promise<Food> {
+    const data = { ...food, userId };
+    return this.dbService.food.create({
+      data,
+    });
+  }
+
   //   async getFood(id: Prisma.FoodWhereUniqueInput): Promise<Food | null> {
   //     return this.dbService.food.findUnique({
   //       where: id,
