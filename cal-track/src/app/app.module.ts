@@ -13,10 +13,11 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { TooltipModule } from 'primeng/tooltip';
 import { FoodListComponent } from './components/foods/food-list/food-list.component';
+import { RelativeTimePipe } from './pipes/relative-time.pipe';
 
 const PRIME_NG_MODULES = [ButtonModule, InputTextModule, TooltipModule];
 @NgModule({
-  declarations: [AppComponent, LoginComponent, FoodListComponent],
+  declarations: [AppComponent, LoginComponent, FoodListComponent, RelativeTimePipe],
   imports: [
     CommonModule,
     FormsModule,

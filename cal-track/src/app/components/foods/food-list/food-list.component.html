@@ -1,1 +1,33 @@
-<p>food-list works!</p>
+<section class="flex justify-content-center flex-column">
+
+  <div *ngIf="!foods?.length" class="empty text-2xl text-center p-4 border-1 m-4 border-dashed border-round">
+    No items to show. Start adding some foods!
+  </div>
+
+  <section class="food-list grid grid-nogutter">
+
+    <div *ngFor="let food of foods; trackBy:foodTrackBy" class="xs:col-12 md:col-6 lg:col-3">
+      <div class="food flex flex-column m-4 p-2 border-1 border-round max-w-max shadow-2">
+        <img [src]="food.imageUrl" alt="">
+        <h3 class="text-2xl w-12rem white-space-nowrap overflow-hidden text-overflow-ellipsis" [pTooltip]="food.name"
+          tooltipPosition="top">
+          {{food.name}}</h3>
+        <div class="flex justify-content-between align-content-start">
+          <small class="text-bluegray-700">
+            <b>{{food.consumedTime | date}}</b>
+            <div>{{food.consumedTime | date:'HH:mm: a'}}</div>
+          </small>
+          <span class="flex flex-column line-height-1">
+            <span class="text-2xl">{{food.calories}}</span>
+            <small>kCal</small>
+          </span>
+
+
+        </div>
+        <small class="text-center pt-2">{{food.consumedTime | relativeTime}}</small>
+
+      </div>
+    </div>
+
+  </section>
+</section>
