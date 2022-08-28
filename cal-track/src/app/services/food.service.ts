@@ -16,4 +16,8 @@ export class FoodService {
   getFoods() {
     return this.http.get<Food[]>(`${this.API_BASE}`);
   }
+
+  addFood(food: Food) {
+    return this.http.post<Food>(`${this.API_BASE}`, food);
+  }
 }

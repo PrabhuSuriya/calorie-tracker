@@ -8,21 +8,39 @@ import { TokenInterceptor } from './token.interceptor';
 import { LoginComponent } from './components/auth/login/login.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { TooltipModule } from 'primeng/tooltip';
+import { CalendarModule } from 'primeng/calendar';
+import { DynamicDialogModule } from 'primeng/dynamicdialog';
+
 import { FoodListComponent } from './components/foods/food-list/food-list.component';
 import { RelativeTimePipe } from './pipes/relative-time.pipe';
+import { EditFoodComponent } from './components/foods/edit-food/edit-food.component';
 
-const PRIME_NG_MODULES = [ButtonModule, InputTextModule, TooltipModule];
+const PRIME_NG_MODULES = [
+  ButtonModule,
+  InputTextModule,
+  TooltipModule,
+  CalendarModule,
+  DynamicDialogModule,
+];
 @NgModule({
-  declarations: [AppComponent, LoginComponent, FoodListComponent, RelativeTimePipe],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    FoodListComponent,
+    RelativeTimePipe,
+    EditFoodComponent,
+  ],
   imports: [
     CommonModule,
     FormsModule,
     HttpClientModule,
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     ...PRIME_NG_MODULES,
   ],
@@ -33,6 +51,7 @@ const PRIME_NG_MODULES = [ButtonModule, InputTextModule, TooltipModule];
       multi: true,
     },
   ],
+  entryComponents: [EditFoodComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

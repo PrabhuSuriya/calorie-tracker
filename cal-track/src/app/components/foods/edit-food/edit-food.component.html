@@ -1,0 +1,38 @@
+<section class="flex justify-content-center w-full p-2">
+  <form class="w-full" novalidate #form="ngForm" (submit)="addFood(form)">
+    <div class="card">
+      <div class="field">
+        <span class="p-float-label">
+          <input id="float-input" ngModel #name="ngModel" name="name" type="text" pInputText required autofocus />
+          <label for="float-input">Food</label>
+        </span>
+      </div>
+
+      <div class="field">
+        <span class="p-float-label">
+          <input id="float-input" ngModel #calories="ngModel" name="calories" type="number" pInputText required />
+          <label for="float-input">Calories</label>
+        </span>
+      </div>
+
+      <div class="field">
+        <span class="p-float-label">
+          <p-calendar id="float-input" ngModel #calories="ngModel" name="consumedTime" [required]="true" appendTo="body"
+            [showTime]="true" hourFormat="12" [showSeconds]="false">
+          </p-calendar>
+          <label for="float-input">When</label>
+        </span>
+      </div>
+
+      <input type="hidden" ngModel #imageUrl="ngModel" name="imageUrl" value="imageUrl">
+
+      <div class="field flex justify-content-end">
+        <button pButton type="button" class="p-button-secondary" (click)="onCancel()">Cancel</button>
+        <button pButton type="submit" class="p-button-success ml-3">Add</button>
+      </div>
+
+
+    </div>
+
+  </form>
+</section>
