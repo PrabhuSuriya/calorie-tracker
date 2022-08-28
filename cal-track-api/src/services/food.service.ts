@@ -23,6 +23,12 @@ export class FoodService {
     });
   }
 
+  async delete(id: number): Promise<Food> {
+    return this.dbService.food.delete({
+      where: { id },
+    });
+  }
+
   //   async getFood(id: Prisma.FoodWhereUniqueInput): Promise<Food | null> {
   //     return this.dbService.food.findUnique({
   //       where: id,
