@@ -8,10 +8,12 @@
 
     <nav class="flex align-items-center mr-4">
       <ng-container *ngIf="user">
-        <h2>Welcome, {{user.name}}</h2>
         <a href="foods" class="pl-3 text-l font-bold no-underline text-indigo-900">Foods</a>
         <a href="#" *ngIf="user.isAdmin" class="pl-3 text-l font-bold no-underline text-indigo-900">Admin</a>
         <a href="#" *ngIf="user.isAdmin" class="pl-3 text-l font-bold no-underline text-indigo-900">Report</a>
+        <h2 class="ml-4">Welcome, {{user.name}}</h2>
+        <i class="pi pi-sign-out ml-2 line-height-1 cursor-pointer" pTooltip="Log out" (click)="logOut()"></i>
+        <!-- <button pButton pRipple type="button" icon="pi pi-sign-out" class="p-button-rounded p-button-warning"></button> -->
       </ng-container>
     </nav>
 </header>

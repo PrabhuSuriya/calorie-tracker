@@ -11,9 +11,10 @@ import { FormsModule } from '@angular/forms';
 
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
+import { TooltipModule } from 'primeng/tooltip';
 import { FoodListComponent } from './components/foods/food-list/food-list.component';
 
-const PRIME_NG_MODULES = [ButtonModule, InputTextModule];
+const PRIME_NG_MODULES = [ButtonModule, InputTextModule, TooltipModule];
 @NgModule({
   declarations: [AppComponent, LoginComponent, FoodListComponent],
   imports: [

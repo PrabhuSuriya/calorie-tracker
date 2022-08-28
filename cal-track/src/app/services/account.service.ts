@@ -25,9 +25,11 @@ export class AccountService {
 
   private updateUser(user: User) {
     this.user = user;
-    this.token = user.token;
-    localStorage.setItem('token', this.token);
-    localStorage.setItem('user', JSON.stringify(this.user));
+    this.token = user?.token;
+    if (user) {
+      localStorage.setItem('token', this.token);
+      localStorage.setItem('user', JSON.stringify(this.user));
+    }
     this.userUpdated$.next(user);
   }
 
@@ -43,5 +45,10 @@ export class AccountService {
           this.updateUser(data);
         })
       );
+  }
+
+  logout() {
+    localStorage.clear();
+    this.updateUser(null as any as User);
   }
 }
