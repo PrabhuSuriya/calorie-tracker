@@ -1,4 +1,11 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpException,
+  HttpStatus,
+  Post,
+} from '@nestjs/common';
 import { User } from '@prisma/client';
 import { AppService } from './app.service';
 import { createToken } from './jwt-helper';
@@ -10,8 +17,12 @@ export class AuthController {
 
   @Post('login')
   async login(@Body() { email, pass }) {
-    const { password, ...user } = await this.userService.loginUser(email, pass);
-    const token = createToken(user);
-    return { ...user, token };
+    const result = await this.userService.loginUser(email, pass);
+    if (result) {
+      const { password, ...user } = result;
+      const token = createToken(user);
+      return { ...user, token };
+    }
+    throw new HttpException('email/password invalid', HttpStatus.NOT_FOUND);
   }
 }
