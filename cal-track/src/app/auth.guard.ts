@@ -4,9 +4,7 @@ import {
   CanActivate,
   Router,
   RouterStateSnapshot,
-  UrlTree,
 } from '@angular/router';
-import { Observable } from 'rxjs';
 import { AccountService } from './services/account.service';
 
 @Injectable({
@@ -16,7 +14,10 @@ export class AuthGuard implements CanActivate {
   constructor(private accountSvc: AccountService, private router: Router) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    this.router.navigate(['login']);
-    return this.accountSvc.isLoggedIn;
+    const isLoggedIn = this.accountSvc.isLoggedIn;
+    if (!isLoggedIn) {
+      this.router.navigate(['login']);
+    }
+    return isLoggedIn;
   }
 }

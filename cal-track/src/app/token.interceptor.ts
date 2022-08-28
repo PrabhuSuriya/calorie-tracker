@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { AccountService } from './services/account.service';
 
-const URLS_TO_EXCLUDE = ['login', 'signup'];
+const URLS_TO_EXCLUDE = ['/login', '/signup'];
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
   constructor(private router: Router, private accountSvc: AccountService) {}
@@ -18,7 +18,7 @@ export class TokenInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    if (request && !URLS_TO_EXCLUDE.includes(request.url)) {
+    if (request && !URLS_TO_EXCLUDE.some((x) => request.url.includes(x))) {
       if (this.accountSvc.isLoggedIn) {
         const token = this.accountSvc.token;
         request = request.clone({
