@@ -44,4 +44,10 @@ export class FoodController {
   async edit(@Body() food: Food) {
     return await this.foodService.edit(food);
   }
+
+  @Post('admin/:id')
+  @UseGuards(AdminGuard)
+  async addByAdmin(@Param('id') id: number, @Body() food: Food) {
+    return await this.foodService.add(+id, food);
+  }
 }

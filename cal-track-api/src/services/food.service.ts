@@ -32,6 +32,7 @@ export class FoodService {
 
   async add(userId: number, food: Food): Promise<Food> {
     const data = { ...food, userId };
+    console.log(data);
     return this.dbService.food.create({
       data,
     });
