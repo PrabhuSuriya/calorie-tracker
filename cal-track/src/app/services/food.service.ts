@@ -45,4 +45,8 @@ export class FoodService {
   editFood(food: Food) {
     return this.http.put<Food>(`${this.API_BASE}`, food);
   }
+
+  addFoodByAdmin(userId: number, food: Food) {
+    return this.http.post<Food>(`${this.API_BASE}/admin/${userId}`, food);
+  }
 }

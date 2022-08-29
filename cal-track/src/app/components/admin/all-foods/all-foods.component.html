@@ -5,18 +5,17 @@
   </div>
 
   <section class="p-2 m-2 border-2 border-dashed border-round" *ngFor="let item of userFoods">
-    <h2 class="border-bottom-1">{{item.user.name}}</h2>
+    <div class="flex border-bottom-1 justify-content-between align-items-center px-2">
+      <h2>{{item.user.name}}</h2>
+      <p-button styleClass="p-button-xs p-1 px-2" label="Add Food" icon="pi pi-plus"
+        (onClick)="openAddDialog(item.user)">
+      </p-button>
+    </div>
     <section class="food-list grid grid-nogutter">
       <ct-food *ngFor="let food of item.foods; trackBy:foodTrackBy" [food]="food" [enableCRUD]="true"
         (edit)="onEditFood(food)" (delete)="onDeleteFood(food)" class="xs:col-12 md:col-6 lg:col-3">
       </ct-food>
     </section>
-
-  </section>
-
-
-  <section class="flex justify-content-center p-4">
-    <p-button label="Add Food" icon="pi pi-plus" (onClick)="openAddDialog()"></p-button>
   </section>
 </section>
 

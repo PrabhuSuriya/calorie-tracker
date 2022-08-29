@@ -69,12 +69,27 @@ export class AllFoodsComponent implements OnInit {
         },
         {}
       );
-      this.userFoods = Object.entries(groupedData).map(([userId, foods]) => ({
-        user: { userId, name: foods?.[0]?.user?.name } as any as User,
+      this.userFoods = Object.entries(groupedData).map(([id, foods]) => ({
+        user: { id, name: foods?.[0]?.user?.name } as any as User,
         foods: foods,
       }));
     });
   }
 
-  openAddDialog() {}
+  openAddDialog(user: User) {
+    this.dialogSvc
+      .open(EditFoodComponent, {
+        header: `Add Food for ${user?.name}`,
+        width: '50%',
+        modal: true,
+        closeOnEscape: true,
+      })
+      .onClose.subscribe((data) => {
+        if (data) {
+          this.foodSvc
+            .addFoodByAdmin(user.id, data)
+            .subscribe(() => this.loadFoods());
+        }
+      });
+  }
 }
