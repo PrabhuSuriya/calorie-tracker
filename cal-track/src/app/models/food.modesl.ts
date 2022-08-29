@@ -7,3 +7,8 @@ export interface Food {
   consumedTime: Date;
   updateUTC: Date;
 }
+
+export interface FoodSummary {
+  date: string;
+  calories: number;
+}

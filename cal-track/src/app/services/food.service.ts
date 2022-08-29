@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Food } from '../models/food.modesl';
 
@@ -14,7 +15,13 @@ export class FoodService {
   }
 
   getFoods() {
-    return this.http.get<Food[]>(`${this.API_BASE}`);
+    return this.http
+      .get<Food[]>(`${this.API_BASE}`)
+      .pipe(
+        map((data) =>
+          data.map((f) => ({ ...f, consumedTime: new Date(f.consumedTime) }))
+        )
+      );
   }
 
   addFood(food: Food) {

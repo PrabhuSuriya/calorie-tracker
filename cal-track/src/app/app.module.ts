@@ -20,6 +20,7 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
 import { FoodListComponent } from './components/foods/food-list/food-list.component';
 import { RelativeTimePipe } from './pipes/relative-time.pipe';
 import { EditFoodComponent } from './components/foods/edit-food/edit-food.component';
+import { FoodSummaryComponent } from './components/foods/food-summary/food-summary.component';
 
 const PRIME_NG_MODULES = [
   ButtonModule,
@@ -36,6 +37,7 @@ const PRIME_NG_MODULES = [
     FoodListComponent,
     RelativeTimePipe,
     EditFoodComponent,
+    FoodSummaryComponent,
   ],
   imports: [
     CommonModule,
@@ -53,7 +55,7 @@ const PRIME_NG_MODULES = [
       multi: true,
     },
   ],
-  entryComponents: [EditFoodComponent],
+  entryComponents: [EditFoodComponent, FoodSummaryComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogService } from 'primeng/dynamicdialog';
-import { Food } from 'src/app/models/food.modesl';
+import { Food, FoodSummary } from 'src/app/models/food.modesl';
+import { AccountService } from 'src/app/services/account.service';
 import { FoodService } from 'src/app/services/food.service';
 import { EditFoodComponent } from '../edit-food/edit-food.component';
+import { FoodSummaryComponent } from '../food-summary/food-summary.component';
 
 @Component({
   selector: 'ct-food-list',
@@ -12,20 +14,51 @@ import { EditFoodComponent } from '../edit-food/edit-food.component';
 })
 export class FoodListComponent implements OnInit {
   foods: Food[] = [];
-  constructor(private foodSvc: FoodService, private dialogSvc: DialogService) {
-    this.updateFoods();
+  daySummary: FoodSummary[] = [];
+  calorieLimit: number;
+
+  constructor(
+    private foodSvc: FoodService,
+    private dialogSvc: DialogService,
+    private accountSvc: AccountService
+  ) {
+    this.calorieLimit = this.accountSvc.user.calorieLimit;
+    this.foodSvc.getFoods().subscribe((data) => {
+      this.foods = data;
+      this.updateSummary();
+    });
   }
 
   ngOnInit(): void {}
 
-  updateFoods(food?: Food) {
-    if (food) {
-      this.foods.push(food);
-    } else {
-      this.foodSvc.getFoods().subscribe((data) => {
-        this.foods = data;
-      });
-    }
+  updateSummary() {
+    const daySummary: { [key: string]: number } = this.foods
+      .map((f) => ({
+        calories: f.calories,
+        date: f.consumedTime.toLocaleDateString(),
+      }))
+      .reduce((a: any, c) => {
+        if (a[c.date]) {
+          a[c.date] += c.calories;
+        } else {
+          a[c.date] = c.calories;
+        }
+        return a;
+      }, {});
+    this.daySummary = Object.entries(daySummary).map(([date, calories]) => ({
+      date,
+      calories,
+    }));
+  }
+
+  openSummaryDialog() {
+    this.dialogSvc.open(FoodSummaryComponent, {
+      header: 'Calories by Day',
+      width: '25rem',
+      modal: true,
+      closeOnEscape: true,
+      data: { summary: this.daySummary, limit: this.calorieLimit },
+    });
   }
 
   openAddDialog() {
@@ -44,7 +77,10 @@ export class FoodListComponent implements OnInit {
   }
 
   addFood(food: Food) {
-    this.foodSvc.addFood(food).subscribe((data) => this.updateFoods(data));
+    this.foodSvc.addFood(food).subscribe((data) => {
+      this.foods.unshift(data);
+      this.updateSummary();
+    });
   }
 
   foodTrackBy(index: number, item: Food) {

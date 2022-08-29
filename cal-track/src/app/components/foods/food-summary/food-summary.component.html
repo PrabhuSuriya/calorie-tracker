@@ -1,0 +1,8 @@
+<section class="flex flex-column">
+
+  <div *ngFor="let item of summaryData" class="flex p-2 m-1 border-1 border-round"
+    [class.bg-red-100]="item.calories > limit">
+    <b>{{item.date}}</b>
+    <span class="px-3 w-5rem">{{item.calories}}</span>kCal
+  </div>
+</section>
