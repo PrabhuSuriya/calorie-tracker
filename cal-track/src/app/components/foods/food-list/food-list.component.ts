@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DialogService } from 'primeng/dynamicdialog';
-import { Food, FoodSummary } from 'src/app/models/food.modesl';
+import { Food, FoodSummary } from 'src/app/models/food.models';
 import { AccountService } from 'src/app/services/account.service';
 import { FoodService } from 'src/app/services/food.service';
 import { EditFoodComponent } from '../edit-food/edit-food.component';

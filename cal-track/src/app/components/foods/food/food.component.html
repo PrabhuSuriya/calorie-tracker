@@ -1,0 +1,23 @@
+<div class="food flex flex-column m-4 p-2 border-1 border-round max-w-max shadow-2">
+  <img class="border-round" [src]="food.imageUrl || 'assets/images/food_thumb.webp'" alt="">
+
+  <h3 class="text-2xl w-12rem white-space-nowrap overflow-hidden text-overflow-ellipsis" [pTooltip]="food.name"
+    tooltipPosition="top">
+    {{food.name}}</h3>
+
+  <div class="flex justify-content-between align-content-start">
+
+    <small class="text-bluegray-700">
+      <b>{{food.consumedTime | date}}</b>
+      <div>{{food.consumedTime | date:'HH:mm: a'}}</div>
+    </small>
+
+    <span class="flex flex-column line-height-1">
+      <span class="text-2xl">{{food.calories}}</span>
+      <small>kCal</small>
+    </span>
+  </div>
+
+  <small class="text-center pt-2">{{food.consumedTime | relativeTime}}</small>
+
+</div>
