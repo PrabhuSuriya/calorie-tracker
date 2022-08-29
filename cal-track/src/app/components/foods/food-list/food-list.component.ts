@@ -15,6 +15,7 @@ import { FoodSummaryComponent } from '../food-summary/food-summary.component';
 export class FoodListComponent implements OnInit {
   foods: Food[] = [];
   daySummary: FoodSummary[] = [];
+  isLimitCrossed = false;
   calorieLimit: number;
 
   constructor(
@@ -49,6 +50,9 @@ export class FoodListComponent implements OnInit {
       date,
       calories,
     }));
+    this.isLimitCrossed = this.daySummary.some(
+      (s) => s.calories > this.calorieLimit
+    );
   }
 
   openSummaryDialog() {

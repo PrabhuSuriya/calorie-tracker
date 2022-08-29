@@ -1,7 +1,8 @@
 <section class="flex justify-content-center flex-column">
 
 <section *ngIf="foods?.length" class="flex justify-content-end p-2">
-  <p-button label="Show Summary" icon="pi pi-calendar" (onClick)="openSummaryDialog()"></p-button>
+  <p-button [styleClass]="isLimitCrossed ? 'p-button-danger' :''" label="Show Summary" icon="pi pi-calendar"
+    (onClick)="openSummaryDialog()"></p-button>
 </section>
   <div *ngIf="!foods?.length" class="empty text-2xl text-center p-4 border-1 m-4 border-dashed border-round">
     No items to show. Start adding some foods!
