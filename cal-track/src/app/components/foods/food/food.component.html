@@ -18,6 +18,21 @@
     </span>
   </div>
 
-  <small class="text-center pt-2">{{food.consumedTime | relativeTime}}</small>
+  <small *ngIf="!enableCRUD; else crud" class="text-center pt-2">
+    {{food.consumedTime | relativeTime}}
+  </small>
+
+  <ng-template #crud>
+    <small class="flex justify-content-between pt-2">
+      <span>
+        {{food.consumedTime | relativeTime}}
+      </span>
+      <span>
+        <i class="pi pi-pencil cursor-pointer" pTooltip="Edit" (click)="edit.emit()"></i>
+        <i class="pi pi-trash text-red-500 pl-2 cursor-pointer" pTooltip="Delete" (click)="delete.emit()"></i>
+      </span>
+    </small>
+  </ng-template>
+
 
 </div>

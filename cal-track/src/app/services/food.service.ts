@@ -37,4 +37,8 @@ export class FoodService {
         )
       );
   }
+
+  deleteFood(food: Food) {
+    return this.http.delete<Food>(`${this.API_BASE}/${food.id}`);
+  }
 }

@@ -7,7 +7,8 @@
   <section class="p-2 m-2 border-2 border-dashed border-round" *ngFor="let item of userFoods">
     <h2 class="border-bottom-1">{{item.user.name}}</h2>
     <section class="food-list grid grid-nogutter">
-      <ct-food *ngFor="let food of item.foods; trackBy:foodTrackBy" [food]="food" class="xs:col-12 md:col-6 lg:col-3">
+      <ct-food *ngFor="let food of item.foods; trackBy:foodTrackBy" [food]="food" [enableCRUD]="true"
+        (edit)="onEditFood(food)" (delete)="onDeleteFood(food)" class="xs:col-12 md:col-6 lg:col-3">
       </ct-food>
     </section>
 
@@ -18,3 +19,5 @@
     <p-button label="Add Food" icon="pi pi-plus" (onClick)="openAddDialog()"></p-button>
   </section>
 </section>
+
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
