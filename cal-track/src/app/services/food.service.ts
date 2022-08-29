@@ -41,4 +41,8 @@ export class FoodService {
   deleteFood(food: Food) {
     return this.http.delete<Food>(`${this.API_BASE}/${food.id}`);
   }
+
+  editFood(food: Food) {
+    return this.http.put<Food>(`${this.API_BASE}`, food);
+  }
 }

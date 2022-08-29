@@ -4,6 +4,7 @@ import { DialogService } from 'primeng/dynamicdialog';
 import { User } from 'src/app/models/auth.models';
 import { Food } from 'src/app/models/food.models';
 import { FoodService } from 'src/app/services/food.service';
+import { EditFoodComponent } from '../../foods/edit-food/edit-food.component';
 
 @Component({
   selector: 'ct-all-foods',
@@ -27,18 +28,34 @@ export class AllFoodsComponent implements OnInit {
   foodTrackBy(index: number, item: Food) {
     return item.id;
   }
-  onEditFood(food: Food) {}
+
+  onEditFood(food: Food) {
+    this.dialogSvc
+      .open(EditFoodComponent, {
+        header: 'Edit Food',
+        width: '50%',
+        modal: true,
+        closeOnEscape: true,
+        data: { food },
+      })
+      .onClose.subscribe((data) => {
+        if (data) {
+          const toUpdate = { ...food, ...data };
+          this.foodSvc.editFood(toUpdate).subscribe(() => this.loadFoods());
+        }
+      });
+  }
+
   onDeleteFood(food: Food) {
     console.log('USERLOG.food', food);
     this.confirmationService.confirm({
       message: 'Are you sure that you want to delete this entry?',
       accept: () => {
-        this.foodSvc.deleteFood(food).subscribe(() => {
-          this.loadFoods();
-        });
+        this.foodSvc.deleteFood(food).subscribe(() => this.loadFoods());
       },
     });
   }
+
   loadFoods() {
     this.foodSvc.getAllFoods().subscribe((data) => {
       const groupedData: { [key: number]: Food[] } = data.reduce(

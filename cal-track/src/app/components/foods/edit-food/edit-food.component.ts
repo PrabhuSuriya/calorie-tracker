@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { Food } from 'src/app/models/food.models';
 import { NutritionixService } from 'src/app/services/nutritionix.service';
 
 @Component({
@@ -10,11 +11,15 @@ import { NutritionixService } from 'src/app/services/nutritionix.service';
 })
 export class EditFoodComponent implements OnInit {
   results: any[] = [];
+  food: Food | null;
+
   constructor(
     public ref: DynamicDialogRef,
     public config: DynamicDialogConfig,
     private nutritionixSvc: NutritionixService
-  ) {}
+  ) {
+    this.food = this.config?.data?.food;
+  }
 
   ngOnInit(): void {
     // this.nutritionixSvc.lookupFoods('idly').subscribe((data) => {
@@ -46,7 +51,6 @@ export class EditFoodComponent implements OnInit {
     if (form.valid) {
       this.ref.close(form.value);
     }
-    console.log(form.value);
   }
 
   onCancel() {

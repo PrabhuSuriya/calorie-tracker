@@ -3,7 +3,7 @@
     <div class="card">
       <div class="field">
         <span class="p-float-label">
-          <p-autoComplete ngModel #name="ngModel" name="name" class="w-full" [suggestions]="results"
+          <p-autoComplete [ngModel]="food?.name" #name="ngModel" name="name" class="w-full" [suggestions]="results"
             (completeMethod)="search($event, form)" (onSelect)="onFoodSelect($event, form)">
             <ng-template let-item pTemplate="item">
               <div class="flex">
@@ -23,25 +23,26 @@
 
       <div class="field">
         <span class="p-float-label">
-          <input id="float-input" ngModel #calories="ngModel" name="calories" type="number" pInputText required />
+          <input id="float-input" [ngModel]="food?.calories" #calories="ngModel" name="calories" type="number"
+            pInputText required />
           <label for="float-input">Calories</label>
         </span>
       </div>
 
       <div class="field">
         <span class="p-float-label">
-          <p-calendar id="float-input" ngModel #calories="ngModel" name="consumedTime" [required]="true" appendTo="body"
-            [showTime]="true" hourFormat="12" [showSeconds]="false">
+          <p-calendar id="float-input" [ngModel]="food?.consumedTime" #calories="ngModel" name="consumedTime"
+            [required]="true" appendTo="body" [showTime]="true" hourFormat="12" [showSeconds]="false">
           </p-calendar>
           <label for="float-input">When</label>
         </span>
       </div>
 
-      <input type="hidden" ngModel #imageUrl="ngModel" name="imageUrl" value="imageUrl">
+      <input type="hidden" [ngModel]="food?.imageUrl" #imageUrl="ngModel" name="imageUrl" value="imageUrl">
 
       <div class="field flex justify-content-end">
         <button pButton type="button" class="p-button-secondary" (click)="onCancel()">Cancel</button>
-        <button pButton type="submit" class="p-button-success ml-3">Add</button>
+        <button pButton type="submit" class="p-button-success ml-3">{{food ? 'Update':'Add'}}</button>
       </div>
 
 
