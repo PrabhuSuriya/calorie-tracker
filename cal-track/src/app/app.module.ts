@@ -22,6 +22,8 @@ import { RelativeTimePipe } from './pipes/relative-time.pipe';
 import { EditFoodComponent } from './components/foods/edit-food/edit-food.component';
 import { FoodSummaryComponent } from './components/foods/food-summary/food-summary.component';
 import { FoodComponent } from './components/foods/food/food.component';
+import { AllFoodsComponent } from './components/admin/all-foods/all-foods.component';
+import { ReportComponent } from './components/admin/report/report.component';
 
 const PRIME_NG_MODULES = [
   ButtonModule,
@@ -40,6 +42,8 @@ const PRIME_NG_MODULES = [
     EditFoodComponent,
     FoodSummaryComponent,
     FoodComponent,
+    AllFoodsComponent,
+    ReportComponent,
   ],
   imports: [
     CommonModule,

@@ -1,3 +1,5 @@
+import { User } from './auth.models';
+
 export interface Food {
   id: number;
   name: string;
@@ -6,6 +8,7 @@ export interface Food {
   userId: number;
   consumedTime: Date;
   updateUTC: Date;
+  user?: User;
 }
 
 export interface FoodSummary {

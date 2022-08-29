@@ -27,4 +27,14 @@ export class FoodService {
   addFood(food: Food) {
     return this.http.post<Food>(`${this.API_BASE}`, food);
   }
+
+  getAllFoods() {
+    return this.http
+      .get<Food[]>(`${this.API_BASE}/all`)
+      .pipe(
+        map((data) =>
+          data.map((f) => ({ ...f, consumedTime: new Date(f.consumedTime) }))
+        )
+      );
+  }
 }

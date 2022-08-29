@@ -88,6 +88,6 @@ export class FoodListComponent implements OnInit {
   }
 
   foodTrackBy(index: number, item: Food) {
-    return item.name;
+    return item.id;
   }
 }

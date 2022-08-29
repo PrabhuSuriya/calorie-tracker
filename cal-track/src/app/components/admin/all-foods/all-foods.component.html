@@ -1,0 +1,20 @@
+<section class="flex justify-content-center flex-column">
+
+  <div *ngIf="!userFoods?.length" class="empty text-2xl text-center p-4 border-1 m-4 border-dashed border-round">
+    No items to show!
+  </div>
+
+  <section class="p-2 m-2 border-2 border-dashed border-round" *ngFor="let item of userFoods">
+    <h2 class="border-bottom-1">{{item.user.name}}</h2>
+    <section class="food-list grid grid-nogutter">
+      <ct-food *ngFor="let food of item.foods; trackBy:foodTrackBy" [food]="food" class="xs:col-12 md:col-6 lg:col-3">
+      </ct-food>
+    </section>
+
+  </section>
+
+
+  <section class="flex justify-content-center p-4">
+    <p-button label="Add Food" icon="pi pi-plus" (onClick)="openAddDialog()"></p-button>
+  </section>
+</section>
