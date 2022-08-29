@@ -17,6 +17,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { TabViewModule } from 'primeng/tabview';
 
 import { FoodListComponent } from './components/foods/food-list/food-list.component';
 import { RelativeTimePipe } from './pipes/relative-time.pipe';
@@ -34,6 +35,7 @@ const PRIME_NG_MODULES = [
   DynamicDialogModule,
   AutoCompleteModule,
   ConfirmDialogModule,
+  TabViewModule,
 ];
 @NgModule({
   declarations: [

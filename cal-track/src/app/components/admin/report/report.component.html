@@ -1,1 +1,33 @@
-<p>report works!</p>
+<section class="p-2">
+  <p-tabView>
+
+    <p-tabPanel header="Weekly Report">
+      <section class="p-3 m-2 border-2 border-dashed border-round">
+        <div class="flex justify-content-around">
+          <div>
+            <h2>Current Week</h2>
+            <small>({{currentWeek.start | date}} to {{currentWeek.end | date}})</small>
+            <div class="flex align-items-center line-height-1 pt-2">
+              <h1 class="text-2xl">{{dayCount?.currentWeek}}</h1>
+              <small class="pl-2">entries</small>
+            </div>
+          </div>
+          <div class="pl-4">
+            <h2>Previous Week</h2>
+            <small>({{currentWeek.start | date}} to {{currentWeek.end | date}})</small>
+            <div class="flex align-items-center line-height-1 pt-2">
+              <h1 class="text-2xl">{{dayCount?.lastWeek}}</h1>
+              <small class="pl-2">entries</small>
+            </div>
+          </div>
+        </div>
+      </section>
+    </p-tabPanel>
+
+    <p-tabPanel header="Average Calories Report">
+      <section class="p-2 m-2 border-2 border-dashed border-round">
+      </section>
+    </p-tabPanel>
+
+  </p-tabView>
+</section>
