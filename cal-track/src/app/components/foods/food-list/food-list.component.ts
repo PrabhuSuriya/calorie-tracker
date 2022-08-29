@@ -32,7 +32,7 @@ export class FoodListComponent implements OnInit {
     this.dialogSvc
       .open(EditFoodComponent, {
         header: 'Add Food',
-        width: '30rem',
+        width: '50%',
         modal: true,
         closeOnEscape: true,
       })

@@ -3,7 +3,20 @@
     <div class="card">
       <div class="field">
         <span class="p-float-label">
-          <input id="float-input" ngModel #name="ngModel" name="name" type="text" pInputText required autofocus />
+          <p-autoComplete ngModel #name="ngModel" name="name" class="w-full" [suggestions]="results"
+            (completeMethod)="search($event, form)" (onSelect)="onFoodSelect($event, form)">
+            <ng-template let-item pTemplate="item">
+              <div class="flex">
+                <div class="h-3rem w-3rem">
+                  <img [src]="item?.photo?.thumb || 'assets/images/food_thumb.webp'" alt="">
+                </div>
+                <div class="ml-2">
+                  <b>{{item.food_name}}</b>
+                  <div>{{item.nf_calories || 'N/A'}}</div>
+                </div>
+              </div>
+            </ng-template>
+          </p-autoComplete>
           <label for="float-input">Food</label>
         </span>
       </div>

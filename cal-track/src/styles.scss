@@ -75,3 +75,9 @@ select {
     scroll-behavior: auto !important
   }
 }
+
+.autocomplete-image {
+  height: 3rem;
+  width: 3rem;
+  object-fit: cover;
+}

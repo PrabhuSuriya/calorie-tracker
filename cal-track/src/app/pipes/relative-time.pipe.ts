@@ -15,7 +15,10 @@ export class RelativeTimePipe implements PipeTransform {
     return '';
   }
   getString(date: Date) {
-    const difference = Date.now() / 1000 - new Date(date).getTime() / 1000;
+    const difference = +(
+      Date.now() / 1000 -
+      new Date(date).getTime() / 1000
+    ).toFixed(0);
     let output = ``;
     if (difference < 60) {
       // Less than a minute has passed:

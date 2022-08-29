@@ -15,6 +15,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { TooltipModule } from 'primeng/tooltip';
 import { CalendarModule } from 'primeng/calendar';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
+import { AutoCompleteModule } from 'primeng/autocomplete';
 
 import { FoodListComponent } from './components/foods/food-list/food-list.component';
 import { RelativeTimePipe } from './pipes/relative-time.pipe';
@@ -26,6 +27,7 @@ const PRIME_NG_MODULES = [
   TooltipModule,
   CalendarModule,
   DynamicDialogModule,
+  AutoCompleteModule,
 ];
 @NgModule({
   declarations: [
