@@ -17,10 +17,38 @@ export class FoodService {
     });
   }
 
+  async getAll(): Promise<Food[]> {
+    return this.dbService.food.findMany({
+      include: {
+        user: {
+          select: {
+            name: true,
+          },
+        },
+      },
+      orderBy: [{ userId: 'asc' }, { consumedTime: 'desc' }],
+    });
+  }
+
   async add(userId: number, food: Food): Promise<Food> {
     const data = { ...food, userId };
     return this.dbService.food.create({
       data,
+    });
+  }
+
+  async edit(food: Food): Promise<Food> {
+    const { name, calories, consumedTime, imageUrl } = food;
+    return this.dbService.food.update({
+      where: {
+        id: food.id,
+      },
+      data: {
+        name,
+        calories,
+        consumedTime,
+        imageUrl,
+      },
     });
   }
 
@@ -29,6 +57,4 @@ export class FoodService {
       where: { id },
     });
   }
-
-  
 }
