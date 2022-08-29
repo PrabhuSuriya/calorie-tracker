@@ -36,7 +36,7 @@ export class FoodListComponent implements OnInit {
     const daySummary: { [key: string]: number } = this.foods
       .map((f) => ({
         calories: f.calories,
-        date: f.consumedTime.toLocaleDateString(),
+        date: new Date(f.consumedTime).toLocaleDateString(),
       }))
       .reduce((a: any, c) => {
         if (a[c.date]) {
