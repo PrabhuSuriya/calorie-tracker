@@ -9,6 +9,7 @@ import { UserInfo } from './user-info.decorator';
 export class ReportController {
   constructor(private readonly foodService: FoodService) {}
 
+  // gets the total number of entries for last week and the week before that
   @Get('daycount')
   async getDayCount(@UserInfo() user: User) {
     const data = await this.foodService.getAll();
@@ -29,11 +30,11 @@ export class ReportController {
     return result;
   }
 
+  // get the average, sum, count of entries grouped by user for last week
   @Get('useraggregate')
   async getAverageCalories(@UserInfo() user: User) {
     const data = await this.foodService.getAll();
     const dateLimit = getDate(-7);
-    console.log(dateLimit);
     const groupedData: any = data
       .filter((f) => new Date(f.consumedTime) > dateLimit)
       .reduce((a: any, c: any) => {
@@ -54,8 +55,6 @@ export class ReportController {
     }));
 
     return result;
-
-    // return await this.foodService.getAvgCaloriesByUser();
   }
 }
 

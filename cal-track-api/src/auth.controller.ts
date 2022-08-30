@@ -1,13 +1,10 @@
 import {
   Body,
   Controller,
-  Get,
   HttpException,
   HttpStatus,
   Post,
 } from '@nestjs/common';
-import { User } from '@prisma/client';
-import { AppService } from './app.service';
 import { createToken } from './jwt-helper';
 import { UserService } from './services/user.service';
 

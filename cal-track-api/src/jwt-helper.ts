@@ -1,6 +1,6 @@
 import * as jwt from 'jsonwebtoken';
 
-const SECRET_KEY = 'jwt_secrt';
+const SECRET_KEY = 'jwt_secret';
 const expiresIn = '100days';
 
 // Create a token from a payload

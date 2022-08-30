@@ -1,5 +1,5 @@
 import { Injectable, NestMiddleware } from '@nestjs/common';
-import { Request, Response, NextFunction } from 'express';
+import { NextFunction, Request, Response } from 'express';
 import { verifyToken } from './jwt-helper';
 
 @Injectable()
@@ -20,7 +20,6 @@ export class AuthMiddleware implements NestMiddleware {
     try {
       const token = authorization.split(' ')[1];
       const user = verifyToken(token);
-      // console.log('v', user);
       req['user'] = user;
       next();
       return;

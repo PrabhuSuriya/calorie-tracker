@@ -1,5 +1,4 @@
 import { MiddlewareConsumer, Module } from '@nestjs/common';
-import { AppService } from './app.service';
 import { AuthController } from './auth.controller';
 import { AuthMiddleware } from './auth.middleware';
 import { FoodController } from './food.controller';
@@ -17,7 +16,7 @@ import { UserController } from './user.controller';
     ReportController,
     UserController,
   ],
-  providers: [AppService, DBService, UserService, FoodService],
+  providers: [DBService, UserService, FoodService],
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
