@@ -9,6 +9,8 @@
     <nav class="flex align-items-center mr-4">
       <ng-container *ngIf="user">
         <a href="foods" class="pl-3 text-l font-bold no-underline text-indigo-900">Foods</a>
+        <a (click)="openInviteDialog()" class="pl-3 text-l font-bold no-underline text-indigo-900 cursor-pointer">Invite
+          a friend!</a>
         <a href="admin/foods" *ngIf="user.isAdmin" class="pl-3 text-l font-bold no-underline text-indigo-900">Admin</a>
         <a href="admin/reports" *ngIf="user.isAdmin"
           class="pl-3 text-l font-bold no-underline text-indigo-900">Reports</a>

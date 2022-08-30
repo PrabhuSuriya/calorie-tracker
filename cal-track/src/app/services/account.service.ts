@@ -11,6 +11,7 @@ export class AccountService {
   token: string;
   user!: User;
   private API_BASE: string;
+  private INVITE_BASE: string;
   userUpdated$ = new BehaviorSubject<User>(null as unknown as User);
 
   constructor(private http: HttpClient) {
@@ -21,6 +22,7 @@ export class AccountService {
       this.userUpdated$.next(this.user);
     }
     this.API_BASE = `${environment.API_BASE}/auth`;
+    this.INVITE_BASE = `${environment.API_BASE}/user`;
   }
 
   private updateUser(user: User) {
@@ -50,5 +52,9 @@ export class AccountService {
   logout() {
     localStorage.clear();
     this.updateUser(null as any as User);
+  }
+
+  inviteUser(name: string, email: string) {
+    return this.http.post<any>(`${this.INVITE_BASE}/invite`, { name, email });
   }
 }

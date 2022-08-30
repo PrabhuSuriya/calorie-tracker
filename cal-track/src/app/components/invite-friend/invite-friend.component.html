@@ -1,0 +1,29 @@
+<section>
+  <form class="w-full" novalidate #form="ngForm" (submit)="invite(form)">
+    <div class="card">
+
+      <div class="field">
+        <span class="p-float-label">
+          <input id="float-input" ngModel #name="ngModel" name="name" type="text" pInputText required />
+          <label for="float-input">Name</label>
+        </span>
+      </div>
+
+      <div class="field">
+        <span class="p-float-label">
+          <input id="float-input" ngModel #email="ngModel" name="email" type="email" pInputText required email />
+          <label for="float-input">Email</label>
+        </span>
+      </div>
+
+      <small *ngIf="showError" class="text-red-300">Email already exists! Please use a different email.</small>
+
+      <div class="field text-right">
+        <button pButton type="submit">Invite</button>
+      </div>
+
+
+    </div>
+
+  </form>
+</section>

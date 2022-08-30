@@ -26,6 +26,7 @@ import { FoodSummaryComponent } from './components/foods/food-summary/food-summa
 import { FoodComponent } from './components/foods/food/food.component';
 import { AllFoodsComponent } from './components/admin/all-foods/all-foods.component';
 import { ReportComponent } from './components/admin/report/report.component';
+import { InviteFriendComponent } from './components/invite-friend/invite-friend.component';
 
 const PRIME_NG_MODULES = [
   ButtonModule,
@@ -48,6 +49,7 @@ const PRIME_NG_MODULES = [
     FoodComponent,
     AllFoodsComponent,
     ReportComponent,
+    InviteFriendComponent,
   ],
   imports: [
     CommonModule,
@@ -65,7 +67,11 @@ const PRIME_NG_MODULES = [
       multi: true,
     },
   ],
-  entryComponents: [EditFoodComponent, FoodSummaryComponent],
+  entryComponents: [
+    EditFoodComponent,
+    FoodSummaryComponent,
+    InviteFriendComponent,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
