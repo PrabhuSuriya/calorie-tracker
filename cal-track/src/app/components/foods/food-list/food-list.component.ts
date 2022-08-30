@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { DialogService } from 'primeng/dynamicdialog';
 import { Food, FoodSummary } from 'src/app/models/food.models';
 import { AccountService } from 'src/app/services/account.service';
@@ -13,7 +13,7 @@ import { FoodSummaryComponent } from '../food-summary/food-summary.component';
   styleUrls: ['./food-list.component.scss'],
   providers: [DialogService],
 })
-export class FoodListComponent implements OnInit {
+export class FoodListComponent {
   foods: Food[] = [];
   daySummary: FoodSummary[] = [];
   isLimitCrossed = false;
@@ -31,8 +31,6 @@ export class FoodListComponent implements OnInit {
       this.updateSummary();
     });
   }
-
-  ngOnInit(): void {}
 
   updateSummary() {
     const daySummary: { [key: string]: number } = this.foods

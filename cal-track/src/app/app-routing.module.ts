@@ -9,11 +9,12 @@ import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
 import { FoodListComponent } from './components/foods/food-list/food-list.component';
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignUpComponent },
+  { path: 'login', component: LoginComponent }, // login page
+  { path: 'signup', component: SignUpComponent }, // TODO signup page
 
-  { path: 'foods', component: FoodListComponent, canActivate: [AuthGuard] },
+  { path: 'foods', component: FoodListComponent, canActivate: [AuthGuard] }, // Food list
 
+  // admin routes
   {
     path: 'admin',
     children: [

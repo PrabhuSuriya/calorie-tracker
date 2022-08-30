@@ -11,6 +11,4 @@ export class ToastService {
   showSuccessToast(message: string) {
     this.messages$.next({ type: 'success', message });
   }
-
-  constructor() {}
 }

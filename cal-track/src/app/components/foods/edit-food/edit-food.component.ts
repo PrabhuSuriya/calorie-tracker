@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { Food } from 'src/app/models/food.models';
@@ -9,7 +9,7 @@ import { NutritionixService } from 'src/app/services/nutritionix.service';
   templateUrl: './edit-food.component.html',
   styleUrls: ['./edit-food.component.scss'],
 })
-export class EditFoodComponent implements OnInit {
+export class EditFoodComponent {
   results: any[] = [];
   food: Food | null;
 
@@ -19,13 +19,6 @@ export class EditFoodComponent implements OnInit {
     private nutritionixSvc: NutritionixService
   ) {
     this.food = this.config?.data?.food;
-  }
-
-  ngOnInit(): void {
-    // this.nutritionixSvc.lookupFoods('idly').subscribe((data) => {
-    //   const { branded, common } = data;
-    //   console.log(data);
-    // });
   }
 
   search(event: any, form: NgForm) {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ConfirmationService } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
 import { User } from 'src/app/models/auth.models';
@@ -13,7 +13,7 @@ import { EditFoodComponent } from '../../foods/edit-food/edit-food.component';
   styleUrls: ['./all-foods.component.scss'],
   providers: [DialogService, ConfirmationService],
 })
-export class AllFoodsComponent implements OnInit {
+export class AllFoodsComponent {
   userFoods: { user: User; foods: Food[] }[] = [];
 
   constructor(
@@ -24,8 +24,6 @@ export class AllFoodsComponent implements OnInit {
   ) {
     this.loadFoods();
   }
-
-  ngOnInit(): void {}
 
   foodTrackBy(index: number, item: Food) {
     return item.id;
@@ -52,7 +50,6 @@ export class AllFoodsComponent implements OnInit {
   }
 
   onDeleteFood(food: Food) {
-    console.log('USERLOG.food', food);
     this.confirmationService.confirm({
       message: 'Are you sure that you want to delete this entry?',
       accept: () => {

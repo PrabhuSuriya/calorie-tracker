@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Food } from '../models/food.models';
-import { DayCount } from '../models/report.models';
 
 @Injectable({
   providedIn: 'root',

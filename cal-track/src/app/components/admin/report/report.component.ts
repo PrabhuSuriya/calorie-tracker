@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { UserAggregate } from 'src/app/models/report.models';
 import { ReportService } from 'src/app/services/report.service';
 
@@ -7,12 +7,13 @@ function getDate(daysToAdd: number = 0) {
   d.setDate(d.getDate() + daysToAdd);
   return d;
 }
+
 @Component({
   selector: 'ct-report',
   templateUrl: './report.component.html',
   styleUrls: ['./report.component.scss'],
 })
-export class ReportComponent implements OnInit {
+export class ReportComponent {
   userAggregate: UserAggregate[] = [];
   dayCount: any = { currentWeek: 0, lastWeek: 0 };
   currentWeek = { start: +getDate(-7), end: +getDate() };
@@ -20,6 +21,7 @@ export class ReportComponent implements OnInit {
     start: +getDate(-14),
     end: +getDate(-7),
   };
+
   constructor(private reportSvc: ReportService) {
     this.loadDayCount();
     this.loadUserAggregate();
@@ -43,6 +45,4 @@ export class ReportComponent implements OnInit {
       this.userAggregate = data;
     });
   }
-
-  ngOnInit(): void {}
 }

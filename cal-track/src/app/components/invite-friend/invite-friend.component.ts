@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { User } from 'src/app/models/auth.models';
 import { AccountService } from 'src/app/services/account.service';
 
 @Component({
@@ -9,15 +8,14 @@ import { AccountService } from 'src/app/services/account.service';
   templateUrl: './invite-friend.component.html',
   styleUrls: ['./invite-friend.component.scss'],
 })
-export class InviteFriendComponent implements OnInit {
+export class InviteFriendComponent {
   showError = false;
+
   constructor(
     private accountSvc: AccountService,
     public ref: DynamicDialogRef,
     public config: DynamicDialogConfig
   ) {}
-
-  ngOnInit(): void {}
 
   invite(form: NgForm) {
     this.showError = false;

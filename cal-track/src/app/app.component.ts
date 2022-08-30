@@ -41,7 +41,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.accountSvc.userUpdated$.subscribe((data) => {
-      console.log('asd', data);
       this.user = data;
     });
   }

@@ -7,6 +7,7 @@ import {
 } from '@angular/router';
 import { AccountService } from './services/account.service';
 
+// Allow only is user is logged in
 @Injectable({
   providedIn: 'root',
 })

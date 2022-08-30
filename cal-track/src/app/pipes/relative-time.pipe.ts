@@ -1,15 +1,11 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-const relativeTimeFormatter = new Intl.RelativeTimeFormat('en', {
-  style: 'narrow',
-});
 @Pipe({
   name: 'relativeTime',
 })
 export class RelativeTimePipe implements PipeTransform {
   transform(value: Date, ...args: unknown[]): string {
     if (value) {
-      console.log('d', value);
       return this.getString(value);
     }
     return '';
