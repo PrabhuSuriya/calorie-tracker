@@ -18,6 +18,7 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { TabViewModule } from 'primeng/tabview';
+import { ToastModule } from 'primeng/toast';
 
 import { FoodListComponent } from './components/foods/food-list/food-list.component';
 import { RelativeTimePipe } from './pipes/relative-time.pipe';
@@ -37,6 +38,7 @@ const PRIME_NG_MODULES = [
   AutoCompleteModule,
   ConfirmDialogModule,
   TabViewModule,
+  ToastModule,
 ];
 @NgModule({
   declarations: [

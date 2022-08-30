@@ -3,6 +3,7 @@ import { DialogService } from 'primeng/dynamicdialog';
 import { Food, FoodSummary } from 'src/app/models/food.models';
 import { AccountService } from 'src/app/services/account.service';
 import { FoodService } from 'src/app/services/food.service';
+import { ToastService } from 'src/app/services/toast.service';
 import { EditFoodComponent } from '../edit-food/edit-food.component';
 import { FoodSummaryComponent } from '../food-summary/food-summary.component';
 
@@ -21,7 +22,8 @@ export class FoodListComponent implements OnInit {
   constructor(
     private foodSvc: FoodService,
     private dialogSvc: DialogService,
-    private accountSvc: AccountService
+    private accountSvc: AccountService,
+    private toastSvc: ToastService
   ) {
     this.calorieLimit = this.accountSvc.user.calorieLimit;
     this.foodSvc.getFoods().subscribe((data) => {
@@ -84,6 +86,7 @@ export class FoodListComponent implements OnInit {
     this.foodSvc.addFood(food).subscribe((data) => {
       this.foods.unshift(data);
       this.updateSummary();
+      this.toastSvc.showSuccessToast('Food added successfully!');
     });
   }
 
