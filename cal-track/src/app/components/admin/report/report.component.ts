@@ -1,21 +1,30 @@
 import { Component, OnInit } from '@angular/core';
+import { UserAggregate } from 'src/app/models/report.models';
 import { ReportService } from 'src/app/services/report.service';
 
+function getDate(daysToAdd: number = 0) {
+  var d = new Date();
+  d.setDate(d.getDate() + daysToAdd);
+  return d;
+}
 @Component({
   selector: 'ct-report',
   templateUrl: './report.component.html',
   styleUrls: ['./report.component.scss'],
 })
 export class ReportComponent implements OnInit {
+  userAggregate: UserAggregate[] = [];
   dayCount: any = { currentWeek: 0, lastWeek: 0 };
-  currentWeek = { start: new Date().setDate(-7), end: +new Date() };
+  currentWeek = { start: +getDate(-7), end: +getDate() };
   lastWeek = {
-    start: new Date().setDate(-14),
-    end: new Date().setDate(-7),
+    start: +getDate(-14),
+    end: +getDate(-7),
   };
   constructor(private reportSvc: ReportService) {
     this.loadDayCount();
+    this.loadUserAggregate();
   }
+
   loadDayCount() {
     this.reportSvc.getEntriesByDay().subscribe((data) => {
       data.forEach((d) => {
@@ -26,6 +35,12 @@ export class ReportComponent implements OnInit {
           this.dayCount.lastWeek += d.count;
         }
       });
+    });
+  }
+
+  loadUserAggregate() {
+    this.reportSvc.getUserAggregate().subscribe((data) => {
+      this.userAggregate = data;
     });
   }
 

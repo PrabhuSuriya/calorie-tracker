@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { DayCount } from '../models/report.models';
+import { DayCount, UserAggregate } from '../models/report.models';
 
 @Injectable({
   providedIn: 'root',
@@ -15,5 +15,9 @@ export class ReportService {
 
   getEntriesByDay() {
     return this.http.get<DayCount[]>(`${this.API_BASE}/daycount`);
+  }
+
+  getUserAggregate() {
+    return this.http.get<UserAggregate[]>(`${this.API_BASE}/useraggregate`);
   }
 }
