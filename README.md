@@ -1,4 +1,3 @@
-
 # CalTrack
 
 This is a web app that enables the user to track the food, calories and time it was consumed. 
@@ -19,6 +18,7 @@ Users can invite their friends using a invitw widget. This is done as part of a 
 - Admin view to manage all entries
 - Reporting view for Admin
 - Invite a friend via email
+- SendGrid Integration for emails
 
 
 ## Run Locally
