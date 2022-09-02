@@ -4,7 +4,7 @@
       <div class="field">
         <span class="p-float-label">
           <p-autoComplete [ngModel]="food?.name" #name="ngModel" name="name" class="w-full" [suggestions]="results"
-            (completeMethod)="search($event, form)" (onSelect)="onFoodSelect($event, form)">
+            (completeMethod)="search($event, form)" (onSelect)="onFoodSelect($event, form)" [autofocus]="true">
             <ng-template let-item pTemplate="item">
               <div class="flex">
                 <div class="h-3rem w-3rem">
