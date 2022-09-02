@@ -2,7 +2,7 @@
 
 This is a web app that enables the user to track the food, calories and time it was consumed. 
 It also has an admin view that provides CRUD on all entries and reporting. 
-Users can invite their friends using a invitw widget. This is done as part of a take home assessment.
+Users can invite their friends using a invite widget. This is done as part of a take home assessment for toptal.
 
 
 ## Authors
