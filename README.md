@@ -61,4 +61,4 @@ UI should be available in http://localhost:4200
 
 ## Demo
 
-https://www.loom.com/share/a92c6f6a28eb43e3b62b42e837ee3bd4
+[CalTrack Demo - Toptal assignment](https://www.loom.com/share/a92c6f6a28eb43e3b62b42e837ee3bd4)
