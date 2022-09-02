@@ -34,6 +34,14 @@ export class AppComponent implements OnInit {
             summary: 'Success',
             detail: message,
           });
+          break;
+        }
+        case 'error': {
+          this.messageSvc.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: message,
+          });
         }
       }
     });

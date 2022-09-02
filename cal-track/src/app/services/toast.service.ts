@@ -11,4 +11,8 @@ export class ToastService {
   showSuccessToast(message: string) {
     this.messages$.next({ type: 'success', message });
   }
+
+  showErrorToast(message: string) {
+    this.messages$.next({ type: 'error', message });
+  }
 }
