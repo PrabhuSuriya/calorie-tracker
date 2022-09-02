@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { AccountService } from 'src/app/services/account.service';
+import { ToastService } from 'src/app/services/toast.service';
 
 @Component({
   selector: 'ct-invite-friend',
@@ -14,7 +15,8 @@ export class InviteFriendComponent {
   constructor(
     private accountSvc: AccountService,
     public ref: DynamicDialogRef,
-    public config: DynamicDialogConfig
+    public config: DynamicDialogConfig,
+    private toastSvc: ToastService
   ) {}
 
   invite(form: NgForm) {
@@ -25,19 +27,12 @@ export class InviteFriendComponent {
       const { name, email } = form.value;
       this.accountSvc.inviteUser(name, email).subscribe((data) => {
         if (!data.error) {
-          this.sendEmail(data);
+          this.toastSvc.showSuccessToast('User invited successfully!');
           this.ref.close();
         } else {
           this.showError = true;
         }
       });
     }
-  }
-
-  sendEmail(user: any) {
-    const body = `You are invited to user CalTrack. Login details-> email: ${user.email} | pass: ${user.password}`;
-    window.open(
-      `mailto:${user.email}?subject=Invite for CalTrack&body=${body}`
-    );
   }
 }
