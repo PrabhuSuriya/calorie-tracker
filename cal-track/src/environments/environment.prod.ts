@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  API_BASE: 'https://calorie-tracker-production.up.railway.app',
+  production: true,
 };
