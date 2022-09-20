@@ -1,6 +1,7 @@
 import { MiddlewareConsumer, Module } from '@nestjs/common';
 import { AuthController } from './auth.controller';
 import { AuthMiddleware } from './auth.middleware';
+import { EchoController } from './echo.controller';
 import { FoodController } from './food.controller';
 import { ReportController } from './report.controller';
 import { DBService } from './services/database.service';
@@ -15,6 +16,7 @@ import { UserController } from './user.controller';
     FoodController,
     ReportController,
     UserController,
+    EchoController,
   ],
   providers: [DBService, UserService, FoodService],
 })
